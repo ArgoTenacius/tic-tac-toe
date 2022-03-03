@@ -1,0 +1,22 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.info{
+    position: absolute;
+}
+
+.board{
+    height: 100vh;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    align-self: center;
+    grid-template: repeat(3, 70px) / repeat(3, 70px);
+}
+
+.board *{
+    cursor: pointer;
+    border: 2px solid black;
+}
