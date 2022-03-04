@@ -1,3 +1,5 @@
+let winner;
+
 const gameBoard = () => {
     let grid = [
         '', '', '',
@@ -33,12 +35,11 @@ const gameProcess = () => {
     let turn = "X"
     turnDOM.textContent = turn
     
-    const handleTurn = () =>{
+    const handleTurn = () => {
         turn == "X" ? turn = "O" : turn = "X"
         turnDOM.textContent = turn
 
     }
-
     
     const winnerCheck = () => {
         let winner = null;
@@ -51,6 +52,14 @@ const gameProcess = () => {
         return winner ? winner : grid.includes('') ? null : 'Tie';
     }
     
+    const markBox = (index) => {
+        board.grid[index] = turn
+        board.debugConsole()
+
+        winner = winnerCheck()
+        console.log(winner)
+        handleTurn()
+    }
 
     /* Game Init */
     const square = Array.from(document.querySelectorAll('#board div'))
@@ -59,11 +68,10 @@ const gameProcess = () => {
     for (let i = 0; i < square.length; i++){
         let square = singular_square.children[i]
         square.addEventListener('click', () => {
-            square.textContent = turn
-            board.grid[i] = turn
-            board.debugConsole()
-            console.log(winnerCheck())
-            handleTurn()
+            if (winner == null && board.grid[i] == ''){
+                square.textContent = turn
+                markBox(i)
+            }
         })
     }
 }
