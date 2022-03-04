@@ -37,17 +37,17 @@ const gameProcess = () => {
     
     turnDOM.textContent = turn
 
+    /* Game Init */
     const square = Array.from(document.querySelectorAll('#board div'))
     const singular_square = document.getElementById("board")
 
-    let counter = 0
-    square.forEach(() => {
-        let square = singular_square.children[counter]
+    for (let i = 0; i < square.length; i++){
+        let square = singular_square.children[i]
         square.addEventListener('click', () => {
-            console.log("clicked!")
+            square.textContent = turn
+            
         })
-        counter++
-    })
+    }
 }
 
 function gameInit() {
