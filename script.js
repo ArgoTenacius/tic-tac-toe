@@ -33,11 +33,11 @@ const gameProcess = () => {
 
     const turnDOM = document.getElementById("turn")
     let turn = "X"
-    turnDOM.textContent = `Turn: ${turn}`
+    turnDOM.textContent = `Player ${turn}'s turn`
     
     const handleTurn = () => {
         turn == "X" ? turn = "O" : turn = "X"
-        turnDOM.textContent = `Turn: ${turn}`
+        turnDOM.textContent = `Player ${turn}'s turn`
     }
     
     const winnerCheck = () => {
@@ -53,7 +53,7 @@ const gameProcess = () => {
     
     const markBox = (index) => {
         board.grid[index] = turn
-        board.debugConsole()
+        //board.debugConsole()
 
         winner = winnerCheck()
 
@@ -89,6 +89,7 @@ function gameInit() {
         let square = singular_square.children[i]
         square.textContent = ''
     }
+    
     gameBoard()
     gameProcess()
 }
