@@ -8,20 +8,25 @@
     <title>Tic tac toe</title>
 </head>
 <body>
-    <div class="info">
-        <p>Turn: <span id="turn">?</span></p>
-    </div>
-    <div class="board" id="board">
-        <div class="square"></div>
-        <div class="square"></div>
-        <div class="square"></div>
-        <div class="square"></div>
-        <div class="square"></div>
-        <div class="square"></div>
-        <div class="square"></div>
-        <div class="square"></div>
-        <div class="square"></div>
-    </div>
+    <main>
+        <div class="info">
+            <span id="turn"> </span>
+        </div>
+        <div class="board" id="board">
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+        </div>
+        <footer>
+            <button class="button__restart" onclick="gameInit()">Restart</button>
+        </footer>
+    </main>
     <script src="script.js"></script>
 </body>
 </html>

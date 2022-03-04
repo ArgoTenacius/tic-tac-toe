@@ -1,4 +1,4 @@
-let winner;
+let winner = null;
 
 const gameBoard = () => {
     let grid = [
@@ -33,18 +33,17 @@ const gameProcess = () => {
 
     const turnDOM = document.getElementById("turn")
     let turn = "X"
-    turnDOM.textContent = turn
+    turnDOM.textContent = `Turn: ${turn}`
     
     const handleTurn = () => {
         turn == "X" ? turn = "O" : turn = "X"
-        turnDOM.textContent = turn
-
+        turnDOM.textContent = `Turn: ${turn}`
     }
     
     const winnerCheck = () => {
         let winner = null;
         let grid = board.grid
-        board.winningCombo.forEach(function(combo, index) {
+        board.winningCombo.forEach(function(combo) {
             if (grid[combo[0]] && grid[combo[0]] === grid[combo[1]] && grid[combo[0]] === grid[combo[2]]) {
                 winner = grid[combo[0]];
             }
@@ -57,11 +56,16 @@ const gameProcess = () => {
         board.debugConsole()
 
         winner = winnerCheck()
-        console.log(winner)
+
         handleTurn()
+
+        if(winner !== null && winner !== 'Tie'){
+            turnDOM.textContent = `The winner is ${winner}!`
+        }else if(winner == 'Tie'){
+            turnDOM.textContent = `TIE!`
+        }
     }
 
-    /* Game Init */
     const square = Array.from(document.querySelectorAll('#board div'))
     const singular_square = document.getElementById("board")
 
@@ -77,6 +81,15 @@ const gameProcess = () => {
 }
 
 function gameInit() {
+    winner = null
+    const square = Array.from(document.querySelectorAll('#board div'))
+    const singular_square = document.getElementById("board")
+
+    for (let i = 0; i < square.length; i++){
+        let square = singular_square.children[i]
+        square.textContent = ''
+    }
+    gameBoard()
     gameProcess()
 }
 

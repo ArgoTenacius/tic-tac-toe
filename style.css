@@ -3,12 +3,24 @@
     padding: 0;
 }
 
+body{
+    font-family: 'Courier New', Courier, monospace;
+}
+
+main{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 .info{
-    position: absolute;
+    display: flex;
+    justify-content: center;
+    font-size: 48px;
 }
 
 .board{
-    height: 100vh;
     display: grid;
     justify-content: center;
     align-content: center;
@@ -27,4 +39,27 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+footer{
+    display: flex;
+    justify-content: center;
+    margin-block: 20px;
+}
+
+.button__restart{
+    width: 210px;
+    padding-block: 5px;
+    border-radius: 10px;
+    border: none;
+    background-color: rgb(119, 255, 119);
+    font-family: 'Courier New', Courier, monospace;
+    text-transform: uppercase;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.button__restart:active{
+    transition: 0.1s;
+    transform: scale(0.95);
 }
