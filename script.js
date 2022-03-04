@@ -23,19 +23,21 @@ const gameBoard = () => {
         | ${grid[6]} | ${grid[7]} | ${grid[8]} |`)
     }
 
-    return {debugConsole}
+    return {debugConsole, grid}
 }
 
-const players = () => {
-    const player1 = "X"
-    const player2 = "Y"
-}
+board = gameBoard()
 
 const gameProcess = () => {
     const turnDOM = document.getElementById("turn")
     let turn = "X"
-    
     turnDOM.textContent = turn
+    
+    const handleTurn = () =>{
+        turn == "X" ? turn = "O" : turn = "X"
+        turnDOM.textContent = turn
+
+    }
 
     /* Game Init */
     const square = Array.from(document.querySelectorAll('#board div'))
@@ -45,7 +47,10 @@ const gameProcess = () => {
         let square = singular_square.children[i]
         square.addEventListener('click', () => {
             square.textContent = turn
+            board.grid[i] = turn
+            board.debugConsole()
             
+            handleTurn()
         })
     }
 }
@@ -55,6 +60,3 @@ function gameInit() {
 }
 
 gameInit()
-
-board = gameBoard()
-board.debugConsole()
