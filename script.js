@@ -23,12 +23,12 @@ const gameBoard = () => {
         | ${grid[6]} | ${grid[7]} | ${grid[8]} |`)
     }
 
-    return {debugConsole, grid}
+    return {debugConsole, grid, winningCombo}
 }
 
-board = gameBoard()
-
 const gameProcess = () => {
+    board = gameBoard()
+
     const turnDOM = document.getElementById("turn")
     let turn = "X"
     turnDOM.textContent = turn
@@ -38,6 +38,19 @@ const gameProcess = () => {
         turnDOM.textContent = turn
 
     }
+
+    
+    const winnerCheck = () => {
+        let winner = null;
+        let grid = board.grid
+        board.winningCombo.forEach(function(combo, index) {
+            if (grid[combo[0]] && grid[combo[0]] === grid[combo[1]] && grid[combo[0]] === grid[combo[2]]) {
+                winner = grid[combo[0]];
+            }
+        });
+        return winner ? winner : grid.includes('') ? null : 'Tie';
+    }
+    
 
     /* Game Init */
     const square = Array.from(document.querySelectorAll('#board div'))
@@ -49,7 +62,7 @@ const gameProcess = () => {
             square.textContent = turn
             board.grid[i] = turn
             board.debugConsole()
-            
+            console.log(winnerCheck())
             handleTurn()
         })
     }
