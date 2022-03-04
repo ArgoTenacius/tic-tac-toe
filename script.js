@@ -1,4 +1,5 @@
 let winner = null;
+let turn = 'X';
 
 const gameBoard = () => {
     let grid = [
@@ -32,7 +33,6 @@ const gameProcess = () => {
     board = gameBoard()
 
     const turnDOM = document.getElementById("turn")
-    let turn = "X"
     turnDOM.textContent = `Player ${turn}'s turn`
     
     const handleTurn = () => {
@@ -52,6 +52,7 @@ const gameProcess = () => {
     }
     
     const markBox = (index) => {
+        console.log(turn)
         board.grid[index] = turn
         //board.debugConsole()
 
@@ -82,6 +83,7 @@ const gameProcess = () => {
 
 function gameInit() {
     winner = null
+    turn = 'X';
     const square = Array.from(document.querySelectorAll('#board div'))
     const singular_square = document.getElementById("board")
 
@@ -89,7 +91,7 @@ function gameInit() {
         let square = singular_square.children[i]
         square.textContent = ''
     }
-    
+
     gameBoard()
     gameProcess()
 }
